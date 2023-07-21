@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Trailer } from "../entities/Trailer";
 
 const axiosInstane = axios.create({
   baseURL: "https://api.themoviedb.org/3",
@@ -17,6 +18,11 @@ interface FetchResponse<T> {
 
 interface FetchGenres<T> {
   genres: T[];
+}
+
+interface FetchTrailers<T> {
+  id: number;
+  results: Trailer[];
 }
 
 class APIClient<T> {
@@ -39,6 +45,12 @@ class APIClient<T> {
 
   getMovieDetails = () => {
     return axiosInstane.get<T>(this.endpoint).then((res) => res.data);
+  };
+
+  getTrailer = () => {
+    return axiosInstane
+      .get<FetchTrailers<T>>(this.endpoint)
+      .then((res) => res.data);
   };
 }
 

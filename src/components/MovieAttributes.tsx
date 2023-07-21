@@ -11,7 +11,7 @@ interface Props {
 const MovieAttributes = ({ movie }: Props) => {
   const langue = languages.find((e) => e.iso_639_1 === movie.original_language);
   return (
-    <Box as="dl">
+    <Box as="dl" textAlign="end">
       <DefinitionItem term="RELEASE DATE">{movie.release_date}</DefinitionItem>
       <DefinitionItem term="LANGUE">{langue?.english_name}</DefinitionItem>
       <DefinitionItem term="GENRES">

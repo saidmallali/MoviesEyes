@@ -60,46 +60,48 @@ const MediaList = ({ heading, movies, series, isLoading }: Props) => {
 
   return (
     <>
-      <Heading
-        paddingLeft="10"
-        paddingBottom={2}
-        marginY={4}
-        textAlign="start"
-        as="h4"
-        size="md"
-      >
-        {heading}
-      </Heading>
+      <Box width={"100%"}>
+        <Heading
+          paddingLeft="10"
+          paddingBottom={2}
+          marginY={4}
+          textAlign="start"
+          as="h4"
+          size="md"
+        >
+          {heading}
+        </Heading>
 
-      {/* <SimpleGrid columns={4}> */}
-      <Box maxW="90%" pt={4} px={9}>
-        <Slider {...settings}>
-          {movies &&
-            movies?.map((movie) => (
-              <MediaCard
-                key={movie.id}
-                title={movie.title}
-                image={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
-                rating={movie.vote_average}
-                id={movie.id}
-                type="movie"
-              />
-            ))}
-          {series &&
-            series?.map((serie) => (
-              <MediaCard
-                key={serie.id}
-                title={serie.name}
-                image={`https://image.tmdb.org/t/p/w500/${serie.backdrop_path}`}
-                rating={serie.vote_average}
-                id={serie.id}
-                type="serie"
-              />
-            ))}
-          {isLoading && Skeletons.map((_, i) => <MediaCardSkelton key={i} />)}
-        </Slider>
+        {/* <SimpleGrid columns={4}> */}
+        <Box maxW="90%" pt={4} px={9}>
+          <Slider {...settings}>
+            {movies &&
+              movies?.map((movie) => (
+                <MediaCard
+                  key={movie.id}
+                  title={movie.title}
+                  image={`https://image.tmdb.org/t/p/w780/${movie.poster_path}`}
+                  rating={movie.vote_average}
+                  id={movie.id}
+                  type="movie"
+                />
+              ))}
+            {series &&
+              series?.map((serie) => (
+                <MediaCard
+                  key={serie.id}
+                  title={serie.name}
+                  image={`https://image.tmdb.org/t/p/w780/${serie.poster_path}`}
+                  rating={serie.vote_average}
+                  id={serie.id}
+                  type="serie"
+                />
+              ))}
+            {isLoading && Skeletons.map((_, i) => <MediaCardSkelton key={i} />)}
+          </Slider>
+        </Box>
+        {/* </SimpleGrid> */}
       </Box>
-      {/* </SimpleGrid> */}
     </>
   );
 };

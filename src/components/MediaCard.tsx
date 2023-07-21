@@ -35,7 +35,7 @@ const MediaCard = ({ image, title, id, rating, type }: Props) => {
       position="relative"
       onMouseEnter={onOpen}
       onMouseLeave={onClose}
-      minH="270px"
+      minH="300px"
       mx="5px"
     >
       <Box
@@ -66,7 +66,6 @@ const MediaCard = ({ image, title, id, rating, type }: Props) => {
         </Link>
       </Box>
       <Image
-        h="200px"
         objectFit="cover"
         src={image}
         alt={`picture of ${title}`}
