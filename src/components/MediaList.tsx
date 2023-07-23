@@ -84,6 +84,7 @@ const MediaList = ({ heading, movies, series, isLoading }: Props) => {
                   rating={movie.vote_average}
                   id={movie.id}
                   type="movie"
+                  releaseDate={movie.release_date}
                 />
               ))}
             {series &&

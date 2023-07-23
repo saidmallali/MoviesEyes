@@ -5,6 +5,7 @@ import {
   useDisclosure,
   HStack,
   Icon,
+  Badge,
 } from "@chakra-ui/react";
 import { AiOutlinePlayCircle, AiFillStar } from "react-icons/ai";
 import { Link } from "react-router-dom";
@@ -15,10 +16,17 @@ interface Props {
   rating: number;
   id: number;
   type: string;
+  releaseDate?: string;
 }
 
-const MediaCard = ({ image, title, id, rating, type }: Props) => {
+const MediaCard = ({ image, releaseDate, title, id, rating, type }: Props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const handelDate = (dt: string) => {
+    const date = new Date(dt).getFullYear();
+    return date;
+  };
+
   return (
     // <Card padding={2}>
     //   <Image src={image} alt={title} borderRadius="3px" />
@@ -52,7 +60,7 @@ const MediaCard = ({ image, title, id, rating, type }: Props) => {
         style={isOpen ? { display: "flex" } : { display: "none" }}
         transition="all 0.4s "
       >
-        <HStack position="absolute" top={3} left={3}>
+        <HStack position="absolute" top={2} left={2}>
           <Icon color="gold" as={AiFillStar} />
           <Box>{rating} /10</Box>
         </HStack>
@@ -66,6 +74,16 @@ const MediaCard = ({ image, title, id, rating, type }: Props) => {
           />
         </Link>
       </Box>
+      <Badge
+        position="absolute"
+        top={2}
+        colorScheme="white"
+        bgColor="mediumseagreen"
+        right={2}
+        px={1}
+      >
+        {handelDate(releaseDate || "")}
+      </Badge>
       <Image
         objectFit="cover"
         src={image}

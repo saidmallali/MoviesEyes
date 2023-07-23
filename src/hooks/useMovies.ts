@@ -6,7 +6,7 @@ import convertToMilliscond from "../utilities/convertToMilliscond";
 
 const apiClient = new APIClient<Movie>("/discover/movie/");
 
-const useMovies = () => {
+const useMovies = (id: number) => {
   const movieQuery = useMovieSerieStore((s) => s.movieQuery);
 
   return useInfiniteQuery({
@@ -14,14 +14,13 @@ const useMovies = () => {
     queryFn: ({ pageParam = 1 }) =>
       apiClient.getAll({
         params: {
-          with_genres: movieQuery.genreId,
+          with_genres: movieQuery.genreId || id,
           page: pageParam,
           sort_by: movieQuery.sortOrder,
         },
       }),
     staleTime: convertToMilliscond("24h"),
     getNextPageParam: (lastPage, allPages) => {
-      console.log(lastPage.total_pages, allPages.length);
       return lastPage.total_pages !== allPages.length + 1
         ? allPages.length + 1
         : undefined;
