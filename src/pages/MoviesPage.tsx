@@ -4,10 +4,12 @@ import MediaCard from "../components/MediaCard";
 import GenresSelector from "../components/GenresSelector";
 import useMovieSerieStore from "../store";
 import SortSelector from "../components/SortSelector";
-import Pagination from "../components/Pagination";
-import React from "react";
+import React, { useEffect } from "react";
+import { useParams, useLocation } from "react-router-dom";
 
 const MoviesPage = () => {
+  const { id } = useParams();
+  const Location = useLocation();
   const {
     data,
     isLoading,
@@ -15,11 +17,16 @@ const MoviesPage = () => {
     isFetchingNextPage,
     fetchNextPage,
     hasNextPage,
-  } = useMovies();
+  } = useMovies(Number(id));
   const setMovieGenreId = useMovieSerieStore((s) => s.setMovieGenreId);
   const sortOrder = useMovieSerieStore((s) => s.movieQuery.sortOrder);
   const setMovieSortOrder = useMovieSerieStore((s) => s.setMovieSortOrder);
-  console.log(sortOrder);
+
+  // if (id) setMovieGenreId(Number(id));
+
+  useEffect(() => {
+    setMovieGenreId(Number(id));
+  }, [Location]);
 
   if (error) throw error;
 
@@ -55,6 +62,7 @@ const MoviesPage = () => {
                   image={`https://image.tmdb.org/t/p/w780/${movie.poster_path}`}
                   rating={movie.vote_average}
                   id={movie.id}
+                  releaseDate={movie.release_date}
                   type="movie"
                 />
               ))}
