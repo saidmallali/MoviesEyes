@@ -21,7 +21,7 @@ export interface Movie {
   homepage: string;
   imbd_id: string;
   production_companies: Companie[];
-  production_countrie: ProductionCountries[];
+  production_countries: ProductionCountries[];
   status: string;
   tagline: string;
   vote_count: number;

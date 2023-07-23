@@ -22,6 +22,7 @@ const MovieAttributes = ({ movie }: Props) => {
       <DefinitionItem term="DUREE">
         {convertToTime(movie.runtime)}
       </DefinitionItem>
+      <DefinitionItem term="BUDGET">{movie.budget} $</DefinitionItem>
     </Box>
   );
 };

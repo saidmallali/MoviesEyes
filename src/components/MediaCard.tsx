@@ -8,6 +8,7 @@ import {
 } from "@chakra-ui/react";
 import { AiOutlinePlayCircle, AiFillStar } from "react-icons/ai";
 import { Link } from "react-router-dom";
+
 interface Props {
   image: string;
   title: string;

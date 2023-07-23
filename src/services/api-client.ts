@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import { Trailer } from "../entities/Trailer";
 
 const axiosInstane = axios.create({
@@ -14,13 +14,14 @@ const axiosInstane = axios.create({
 interface FetchResponse<T> {
   page: number;
   results: T[];
+  total_pages: number;
 }
 
 interface FetchGenres<T> {
   genres: T[];
 }
 
-interface FetchTrailers<T> {
+interface FetchTrailers {
   id: number;
   results: Trailer[];
 }
@@ -31,9 +32,9 @@ class APIClient<T> {
     this.endpoint = endpoint;
   }
 
-  getAll = () => {
+  getAll = (config: AxiosRequestConfig) => {
     return axiosInstane
-      .get<FetchResponse<T>>(this.endpoint)
+      .get<FetchResponse<T>>(this.endpoint, config)
       .then((res) => res.data);
   };
 
@@ -49,7 +50,7 @@ class APIClient<T> {
 
   getTrailer = () => {
     return axiosInstane
-      .get<FetchTrailers<T>>(this.endpoint)
+      .get<FetchTrailers>(this.endpoint)
       .then((res) => res.data);
   };
 }

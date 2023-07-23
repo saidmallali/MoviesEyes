@@ -1,5 +1,5 @@
 import { Movie } from "../entities/Movie";
-import { Grid, GridItem, Show, Flex } from "@chakra-ui/react";
+import { Grid, GridItem, Show, Flex, Box, Badge, Text } from "@chakra-ui/react";
 import MovieAttributes from "./MovieAttributes";
 import HeadingMovie from "./HeadingMovie";
 import Rating from "./Rating";
@@ -38,6 +38,26 @@ const HeroDetailPage = ({ data }: Props) => {
             <Rating numReviews={data.vote_count} score={data.vote_average} />
           </Flex>
           <ExpandableText limit={250}>{data.overview}</ExpandableText>
+          <Box marginY={3}>
+            <Text color="gray.600" fontSize="md" fontWeight={"semibold"} mb={2}>
+              Production Companies:{" "}
+            </Text>
+            {data.production_companies.map((pc) => (
+              <Badge rounded={"md"} mx={2} my={1} padding={2}>
+                {pc.name}
+              </Badge>
+            ))}
+          </Box>
+          <Box marginY={3}>
+            <Text color="gray.600" fontSize="md" fontWeight={"semibold"} mb={2}>
+              Production Countries:{" "}
+            </Text>
+            {data.production_countries.map((pc) => (
+              <Badge rounded={"md"} mx={2} my={1} padding={2}>
+                {pc.name}
+              </Badge>
+            ))}
+          </Box>
         </GridItem>
         <GridItem paddingY={2} area="poster">
           <Show above="lg">

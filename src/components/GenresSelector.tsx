@@ -8,20 +8,35 @@ import {
 } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 import useGenres from "../hooks/useGenres";
+import { useState } from "react";
 
-const GenresSelector = () => {
+interface Props {
+  setGenre: (genre: number) => void;
+}
+
+const GenresSelector = ({ setGenre }: Props) => {
   const { data, isLoading, error } = useGenres();
+  const [Genre, setGenreState] = useState("Genres");
 
   if (error) throw error;
+
+  const handeClick = (id: number, name: string) => {
+    setGenreState(name);
+    setGenre(id);
+  };
 
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-        Genres
+        {Genre}
       </MenuButton>
       <MenuList>
         {data &&
-          data.genres?.map((g) => <MenuItem key={g.id}>{g.name}</MenuItem>)}
+          data.genres?.map((g) => (
+            <MenuItem onClick={() => handeClick(g.id, g.name)} key={g.id}>
+              {g.name}
+            </MenuItem>
+          ))}
         {isLoading && <Spinner />}
       </MenuList>
     </Menu>
