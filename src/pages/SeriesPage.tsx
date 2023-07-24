@@ -9,7 +9,7 @@ import { useParams, useLocation } from "react-router-dom";
 import MediaCardSkelton from "../components/MediaCardSkelton";
 
 const SeriesPage = () => {
-  const { id = 10759, genre } = useParams();
+  const { id = 10759 } = useParams();
   const Location = useLocation();
   const {
     data,
@@ -37,7 +37,7 @@ const SeriesPage = () => {
     <>
       <Box>
         <Flex mb={4} ml={1}>
-          <GenresSelector genre={genre} setGenre={setSeriesGenreId} />
+          <GenresSelector type="series" setGenre={setSeriesGenreId} />
           <Box mx={3}>
             <SortSelector
               sortOrder={sortOrder || ""}

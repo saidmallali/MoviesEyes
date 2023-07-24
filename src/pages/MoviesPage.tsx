@@ -8,7 +8,7 @@ import React, { useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import MediaCardSkelton from "../components/MediaCardSkelton";
 const MoviesPage = () => {
-  const { id } = useParams();
+  const { id = 28 } = useParams();
   const Location = useLocation();
   const {
     data,
@@ -34,7 +34,7 @@ const MoviesPage = () => {
     <>
       <Box>
         <Flex mb={4} ml={1}>
-          <GenresSelector setGenre={setMovieGenreId} />
+          <GenresSelector type="movies" setGenre={setMovieGenreId} />
           <Box mx={3}>
             <SortSelector
               sortOrder={sortOrder || ""}
