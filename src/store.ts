@@ -19,6 +19,8 @@ interface MovieSerieStore {
   serieQuery: SerieQuery;
   setMovieGenreId: (genreId: number) => void;
   setMovieSortOrder: (sortOrder: string) => void;
+  setSeriesGenreId: (genreId: number) => void;
+  setSeriesSortOrder: (sortOrder: string) => void;
 }
 
 const useMovieSerieStore = create<MovieSerieStore>((set) => ({
@@ -32,6 +34,16 @@ const useMovieSerieStore = create<MovieSerieStore>((set) => ({
   setMovieSortOrder: (sortOrder) =>
     set((store) => ({
       movieQuery: { ...store.movieQuery, sortOrder },
+    })),
+
+  setSeriesGenreId: (genreId) =>
+    set((store) => ({
+      serieQuery: { ...store.serieQuery, genreId },
+    })),
+
+  setSeriesSortOrder: (sortOrder) =>
+    set((store) => ({
+      serieQuery: { ...store.serieQuery, sortOrder },
     })),
 }));
 

@@ -172,25 +172,16 @@ interface Props {
 const DesktopSubNav = ({ name, id, type }: Props) => {
   return (
     <Box role={"group"} display={"block"} p={2} rounded={"md"}>
-      <NavLink
-        style={({ isActive }) => {
-          return {
-            color: isActive ? "orange" : "inherit",
-          };
-        }}
-        to="#"
+      <Box
+        transition={"all .3s ease"}
+        _groupHover={{ color: "orange.400" }}
+        fontWeight={500}
+        textAlign="start"
       >
-        <Box
-          transition={"all .3s ease"}
-          _groupHover={{ color: "orange.400" }}
-          fontWeight={500}
-          textAlign="start"
-        >
-          <Link to={`/${type.toLowerCase()}/${id}/${name.toLowerCase()}`}>
-            {name}
-          </Link>
-        </Box>
-      </NavLink>
+        <Link to={`/${type.toLowerCase()}/${id}/${name.toLowerCase()}`}>
+          {name}
+        </Link>
+      </Box>
     </Box>
   );
 };

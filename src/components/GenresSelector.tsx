@@ -12,11 +12,12 @@ import { useState } from "react";
 
 interface Props {
   setGenre: (genre: number) => void;
+  genre?: string;
 }
 
-const GenresSelector = ({ setGenre }: Props) => {
+const GenresSelector = ({ setGenre, genre }: Props) => {
   const { data, isLoading, error } = useGenres();
-  const [Genre, setGenreState] = useState("Genres");
+  const [Genre, setGenreState] = useState("Genres" || genre);
 
   if (error) throw error;
 

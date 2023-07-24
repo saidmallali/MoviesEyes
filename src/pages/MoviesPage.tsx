@@ -6,7 +6,7 @@ import useMovieSerieStore from "../store";
 import SortSelector from "../components/SortSelector";
 import React, { useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
-
+import MediaCardSkelton from "../components/MediaCardSkelton";
 const MoviesPage = () => {
   const { id } = useParams();
   const Location = useLocation();
@@ -29,7 +29,7 @@ const MoviesPage = () => {
   }, [Location]);
 
   if (error) throw error;
-
+  const Skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
   return (
     <>
       <Box>
@@ -68,6 +68,7 @@ const MoviesPage = () => {
               ))}
             </React.Fragment>
           ))}
+          {isLoading && Skeletons.map((_, i) => <MediaCardSkelton key={i} />)}
         </SimpleGrid>
         <Flex my={3} justifyContent={"center"}>
           {hasNextPage && (

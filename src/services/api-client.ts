@@ -44,7 +44,7 @@ class APIClient<T> {
       .then((res) => res.data);
   };
 
-  getMovieDetails = () => {
+  getDetails = () => {
     return axiosInstane.get<T>(this.endpoint).then((res) => res.data);
   };
 

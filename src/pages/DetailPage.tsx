@@ -21,7 +21,7 @@ const DetailPage = () => {
   return (
     <>
       <Box>
-        <HeroDetailPage data={data} />
+        <HeroDetailPage movie={data} />
         {trailer && <VideoTrailer keyTrailer={trailer?.results[1].key} />}
         <SimilarMovies MovieId={data.id} />
       </Box>

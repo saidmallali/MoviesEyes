@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import APIClient from "../services/api-client";
 import convertToMilliscond from "../utilities/convertToMilliscond";
-import { Movie } from "../entities/Movie";
+import { TvShow } from "../entities/TvShow";
 
-const useMovieDetails = (id: number | undefined, name: string | undefined) => {
-  const apiClient = new APIClient<Movie>(`/movie/${id}`);
+const useSerieDetails = (id: number | undefined, name: string | undefined) => {
+  const apiClient = new APIClient<TvShow>(`/tv/${id}`);
   return useQuery({
     queryKey: [name, id],
     queryFn: apiClient.getDetails,
@@ -12,4 +12,4 @@ const useMovieDetails = (id: number | undefined, name: string | undefined) => {
   });
 };
 
-export default useMovieDetails;
+export default useSerieDetails;
