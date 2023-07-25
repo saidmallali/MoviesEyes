@@ -28,15 +28,14 @@ const GenresSelector = ({ setGenre, type }: Props) => {
     type === "movies"
       ? useMovieSerieStore((s) => s.movieQuery.genreId)
       : useMovieSerieStore((s) => s.serieQuery.genreId);
-  console.log(genreId);
+
   const genreName =
     type === "movies"
       ? genresMovie.genres.find((g) => g.id === genreId)?.name
       : genresSerie.genres.find((g) => g.id === genreId)?.name;
   const { data, isLoading, error } = useGenres();
   const [Genre, setGenreState] = useState(genreName);
-  console.log("genre", Genre);
-  console.log("genreName", genreName);
+
   if (error) throw error;
 
   const handeClick = (id: number, name: string) => {

@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { AiOutlinePlayCircle, AiFillStar } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import NoImage from "../assets/place_holder.jpg";
 
 interface Props {
   image: string;
@@ -27,6 +28,7 @@ const MediaCard = ({ image, releaseDate, title, id, rating, type }: Props) => {
     return date;
   };
 
+  console.log(image);
   return (
     // <Card padding={2}>
     //   <Image src={image} alt={title} borderRadius="3px" />
@@ -86,7 +88,7 @@ const MediaCard = ({ image, releaseDate, title, id, rating, type }: Props) => {
       </Badge>
       <Image
         objectFit="cover"
-        src={image}
+        src={image.includes("null") ? NoImage : image}
         alt={`picture of ${title}`}
         roundedTop="lg"
       />

@@ -1,5 +1,6 @@
-import { HStack, Spacer } from "@chakra-ui/react";
+import { HStack, Box } from "@chakra-ui/react";
 import ColorModeSwitch from "./ColorModeSwitch";
+import SearchInput from "./SearchInput";
 
 const NavBar = () => {
   return (
@@ -9,7 +10,9 @@ const NavBar = () => {
       justifyContent="space-between"
       padding={3}
     >
-      <Spacer />
+      <Box mr={4} flex="1">
+        <SearchInput />
+      </Box>
       <ColorModeSwitch />
     </HStack>
   );

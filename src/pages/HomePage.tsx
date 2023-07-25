@@ -27,9 +27,6 @@ const HomePage = () => {
       </Show> */}
       <GridItem area="main">
         <Box maxW="100vw">
-          <Flex ml="41px">
-            <GenresSelector />
-          </Flex>
           <NowPlayingMovies />
           <PopularMovies />
           <TopRatedMovies />

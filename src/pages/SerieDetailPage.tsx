@@ -13,8 +13,6 @@ const SerieDetailPage = () => {
   if (!data) return null;
   if (error) throw error;
 
-  console.log(data);
-
   return (
     <>
       <Box>

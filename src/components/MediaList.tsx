@@ -80,7 +80,7 @@ const MediaList = ({ heading, movies, series, isLoading }: Props) => {
                 <MediaCard
                   key={movie.id}
                   title={movie.title}
-                  image={`https://image.tmdb.org/t/p/w780/${movie.poster_path}`}
+                  image={`https://image.tmdb.org/t/p/w780${movie.poster_path}`}
                   rating={movie.vote_average}
                   id={movie.id}
                   type="movie"
@@ -92,7 +92,7 @@ const MediaList = ({ heading, movies, series, isLoading }: Props) => {
                 <MediaCard
                   key={serie.id}
                   title={serie.name}
-                  image={`https://image.tmdb.org/t/p/w780/${serie.poster_path}`}
+                  image={`https://image.tmdb.org/t/p/w780${serie.poster_path}`}
                   rating={serie.vote_average}
                   id={serie.id}
                   type="serie"

@@ -21,6 +21,8 @@ interface MovieSerieStore {
   setMovieSortOrder: (sortOrder: string) => void;
   setSeriesGenreId: (genreId: number) => void;
   setSeriesSortOrder: (sortOrder: string) => void;
+  setMoviesSearchText: (searchText: string) => void;
+  setSeriesSearchText: (searchText: string) => void;
 }
 
 const useMovieSerieStore = create<MovieSerieStore>((set) => ({
@@ -28,22 +30,30 @@ const useMovieSerieStore = create<MovieSerieStore>((set) => ({
   serieQuery: {},
   setMovieGenreId: (genreId) =>
     set((store) => ({
-      movieQuery: { ...store.movieQuery, genreId },
+      movieQuery: { ...store.movieQuery, genreId, searchText: undefined },
     })),
 
   setMovieSortOrder: (sortOrder) =>
     set((store) => ({
-      movieQuery: { ...store.movieQuery, sortOrder },
+      movieQuery: { ...store.movieQuery, sortOrder, searchText: undefined },
     })),
 
   setSeriesGenreId: (genreId) =>
     set((store) => ({
-      serieQuery: { ...store.serieQuery, genreId },
+      serieQuery: { ...store.serieQuery, genreId, searchText: undefined },
     })),
 
   setSeriesSortOrder: (sortOrder) =>
     set((store) => ({
-      serieQuery: { ...store.serieQuery, sortOrder },
+      serieQuery: { ...store.serieQuery, sortOrder, searchText: undefined },
+    })),
+  setMoviesSearchText: (searchText) =>
+    set((store) => ({
+      movieQuery: { ...store.movieQuery, searchText },
+    })),
+  setSeriesSearchText: (searchText) =>
+    set((store) => ({
+      serieQuery: { ...store.serieQuery, searchText },
     })),
 }));
 

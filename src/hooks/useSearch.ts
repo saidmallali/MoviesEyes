@@ -1,25 +1,21 @@
-import { Movie } from "../entities/Movie";
 import APIClient from "../services/api-client";
-import useMovieSerieStore from "../store";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import convertToMilliscond from "../utilities/convertToMilliscond";
 
-const apiClient = new APIClient<Movie>("/discover/movie/");
-
-const useMovies = (genreId: number) => {
-  const movieQuery = useMovieSerieStore((s) => s.movieQuery);
+const useSearch = <T>(type: string, searchText: string) => {
+  console.log(type);
+  const apiClient = new APIClient<T>(`/search/${type}`);
 
   return useInfiniteQuery({
-    queryKey: ["discover", movieQuery],
+    queryKey: ["search", type, searchText],
     queryFn: ({ pageParam = 1 }) =>
       apiClient.getAll({
         params: {
-          with_genres: movieQuery.genreId || genreId,
+          query: searchText,
           page: pageParam,
-          sort_by: movieQuery.sortOrder,
         },
       }),
-    staleTime: convertToMilliscond("24h"),
+    staleTime: convertToMilliscond("3h"),
     getNextPageParam: (lastPage, allPages) => {
       return lastPage.total_pages !== allPages.length + 1
         ? allPages.length + 1
@@ -28,4 +24,4 @@ const useMovies = (genreId: number) => {
   });
 };
 
-export default useMovies;
+export default useSearch;
