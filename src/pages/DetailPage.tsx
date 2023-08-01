@@ -22,7 +22,9 @@ const DetailPage = () => {
     <>
       <Box>
         <HeroDetailPage movie={data} />
-        {trailer && <VideoTrailer keyTrailer={trailer?.results[1].key} />}
+        {trailer && trailer?.results[0] && (
+          <VideoTrailer keyTrailer={trailer?.results[0].key} />
+        )}
         <SimilarMovies MovieId={data.id} />
       </Box>
     </>

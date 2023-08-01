@@ -1,4 +1,4 @@
-import { SimpleGrid, Button, Spinner, Box, Flex } from "@chakra-ui/react";
+import { SimpleGrid, Button, Box, Flex } from "@chakra-ui/react";
 import useMovies from "../hooks/useMovies";
 import MediaCard from "../components/MediaCard";
 import GenresSelector from "../components/GenresSelector";

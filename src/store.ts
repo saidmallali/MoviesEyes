@@ -1,5 +1,9 @@
 import { create } from "zustand";
 
+interface AppQuery {
+  showNavBar: boolean;
+}
+
 interface MovieQuery {
   genreId?: number;
   page?: number;
@@ -15,6 +19,7 @@ interface SerieQuery {
 }
 
 interface MovieSerieStore {
+  appQuery: AppQuery;
   movieQuery: MovieQuery;
   serieQuery: SerieQuery;
   setMovieGenreId: (genreId: number) => void;
@@ -23,9 +28,13 @@ interface MovieSerieStore {
   setSeriesSortOrder: (sortOrder: string) => void;
   setMoviesSearchText: (searchText: string) => void;
   setSeriesSearchText: (searchText: string) => void;
+  setShowNavBar: (showNavBar: boolean) => void;
 }
 
 const useMovieSerieStore = create<MovieSerieStore>((set) => ({
+  appQuery: {
+    showNavBar: true,
+  },
   movieQuery: {},
   serieQuery: {},
   setMovieGenreId: (genreId) =>
@@ -54,6 +63,11 @@ const useMovieSerieStore = create<MovieSerieStore>((set) => ({
   setSeriesSearchText: (searchText) =>
     set((store) => ({
       serieQuery: { ...store.serieQuery, searchText },
+    })),
+
+  setShowNavBar: (showNavBar) =>
+    set((store) => ({
+      appQuery: { ...store.appQuery, showNavBar },
     })),
 }));
 

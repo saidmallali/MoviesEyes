@@ -7,7 +7,7 @@ const useSearch = <T>(type: string, searchText: string) => {
   const apiClient = new APIClient<T>(`/search/${type}`);
 
   return useInfiniteQuery({
-    queryKey: ["search", type, searchText],
+    queryKey: [`search ${searchText} in ${type} `, type, searchText],
     queryFn: ({ pageParam = 1 }) =>
       apiClient.getAll({
         params: {

@@ -33,6 +33,7 @@ const GenresSelector = ({ setGenre, type }: Props) => {
     type === "movies"
       ? genresMovie.genres.find((g) => g.id === genreId)?.name
       : genresSerie.genres.find((g) => g.id === genreId)?.name;
+
   const { data, isLoading, error } = useGenres();
   const [Genre, setGenreState] = useState(genreName);
 

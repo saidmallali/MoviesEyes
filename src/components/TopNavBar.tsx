@@ -77,7 +77,7 @@ export default function TopNavBar() {
           spacing={6}
         >
           <Button fontSize={"sm"} fontWeight={400}>
-            <Link to={"/"}>Sign In</Link>
+            <Link to={"/sign-in"}>Sign In</Link>
           </Button>
           <Button
             display={{ base: "none", md: "inline-flex" }}
@@ -89,7 +89,7 @@ export default function TopNavBar() {
               bg: "orange.300",
             }}
           >
-            <Link to="/">Sign Up</Link>
+            <Link to="/sign-up">Sign Up</Link>
           </Button>
         </Stack>
       </Flex>
@@ -121,6 +121,8 @@ const DesktopNav = () => {
                   textDecoration: "none",
                   color: linkHoverColor,
                 }}
+                display="flex"
+                alignItems="center"
               >
                 <NavLink
                   style={({ isActive }) => {
@@ -132,6 +134,7 @@ const DesktopNav = () => {
                 >
                   {navItem.name}{" "}
                 </NavLink>
+                {navItem.children && <Icon ml={1} as={BiChevronDownCircle} />}
               </Box>
             </PopoverTrigger>
 

@@ -7,6 +7,8 @@ import SeriesPage from "./pages/SeriesPage";
 import DetailPage from "./pages/DetailPage";
 import SerieDetailPage from "./pages/SerieDetailPage";
 import SearchPage from "./pages/SearchPage";
+import SignInPage from "./pages/SignInPage";
+import SignUpPage from "./pages/SignUpPage";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +47,14 @@ const router = createBrowserRouter([
       {
         path: "search/:type/:searchText",
         element: <SearchPage />,
+      },
+      {
+        path: "sign-in",
+        element: <SignInPage />,
+      },
+      {
+        path: "sign-up",
+        element: <SignUpPage />,
       },
     ],
   },

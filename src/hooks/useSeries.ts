@@ -10,7 +10,7 @@ const useSeries = (id: number) => {
   const serieQuery = useMovieSerieStore((s) => s.serieQuery);
 
   return useInfiniteQuery({
-    queryKey: ["discover", serieQuery],
+    queryKey: ["discover series", serieQuery],
     queryFn: ({ pageParam = 1 }) =>
       apiClient.getAll({
         params: {
